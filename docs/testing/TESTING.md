@@ -60,6 +60,12 @@ Current thresholds are adjusted pragmatically to pass CI while we backfill tests
 *   **GoalService**: 35%
 *   **UserService**: 30%
 
-**TODO: Ratchet Up Coverage**
-The target for critical services (`UserService`, `GoalService`) is **80%**.
-As new features are added, developers should add tests to incrementally raise these limits in `jest.config.js`.
+
+### Ratchet Rule
+To ensure we reach our targets:
+1.  **Strict Improvement**: Increase global thresholds by **+5%** after each batch of new tests.
+2.  **Priorities**: Focus on reaching **70%** then **80%** for these high-value services:
+    *   `GoalService`
+    *   `UserService`
+    *   `GroupService`
+3.  **CI Enforcement**: Commits that lower coverage below the current `jest.config.js` thresholds will fail.

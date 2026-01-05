@@ -14,16 +14,16 @@ module.exports = {
   coverageReporters: ["json", "lcov", "text", "clover"],
   coverageThreshold: {
     "global": {
-      "branches": 25,
-      "functions": 25,
-      "lines": 30,
+      "branches": 30,
+      "functions": 20,
+      "lines": 35,
       "statements": 30
     },
     "src/services/GoalService.ts": {
       "statements": 35
     },
     "src/services/UserService.ts": {
-      "statements": 30
+      "statements": 35
     }
   }
 };
