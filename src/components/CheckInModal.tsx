@@ -64,6 +64,7 @@ export const CheckInModal: React.FC<CheckInModalProps> = ({ visible, onClose, on
                         onChangeText={setNote}
                     />
 
+                    {/* 
                     <Text style={styles.label}>Add a photo</Text>
                     <View style={styles.photoContainer}>
                         {image ? (
@@ -80,6 +81,7 @@ export const CheckInModal: React.FC<CheckInModalProps> = ({ visible, onClose, on
                             </TouchableOpacity>
                         )}
                     </View>
+                     */}
 
                     <Text style={styles.label}>Did you complete a milestone?</Text>
                     <View style={styles.milestoneList}>

@@ -16,7 +16,7 @@ import { useAuth } from '../context/AuthContext';
 
 export const ProfileScreen = () => {
     const { signOut } = useAuth();
-    const { userId, userName, setUserName, experienceLevel, groupId } = useUser();
+    const { userId, userName, setUserName, experienceLevel, groupId, setGroupId } = useUser();
     const [isGuide, setIsGuide] = useState(false);
     const [loading, setLoading] = useState(false);
     const [notifConfig, setNotifConfig] = useState<NotificationConfig | null>(null);
@@ -77,6 +77,33 @@ export const ProfileScreen = () => {
         } finally {
             setIsUpdating(false);
         }
+    };
+
+    const handleLeaveGroup = () => {
+        if (!groupId) return;
+        Alert.alert(
+            "Leave User Group",
+            "Are you sure you want to leave your current group?",
+            [
+                { text: "Cancel", style: "cancel" },
+                {
+                    text: "Leave",
+                    style: "destructive",
+                    onPress: async () => {
+                        try {
+                            await GroupService.leaveGroup(userId, groupId);
+                            setGroupId(null);
+                            // Navigation will auto-update or stay on Profile? 
+                            // Usually MainTabs might redirect if groupId missing?
+                            // For now just update context.
+                            Alert.alert("Left Group", "You have left the group.");
+                        } catch (e) {
+                            Alert.alert("Error", "Could not leave group.");
+                        }
+                    }
+                }
+            ]
+        );
     };
 
     const handleSignOut = () => {
@@ -153,8 +180,10 @@ export const ProfileScreen = () => {
                 {/* Preferences */}
 
                 {/* Preferences */}
+                {/* Preferences */}
                 <Text style={styles.sectionTitleSmall}>PREFERENCES</Text>
                 <View style={styles.prefList}>
+                    {/* ... (Existing Pref Items) ... */}
                     <View style={styles.prefItem}>
                         <View style={styles.prefIconBg}>
                             <Ionicons name="notifications" size={20} color="#3B82F6" />
@@ -200,6 +229,17 @@ export const ProfileScreen = () => {
                         <Text style={styles.prefLabel}>Send Feedback</Text>
                         <Ionicons name="chevron-forward" size={20} color={colors.textLight} />
                     </TouchableOpacity>
+
+                    {/* Danger Zone: Leave Group */}
+                    {groupId && (
+                        <TouchableOpacity style={styles.prefItem} onPress={handleLeaveGroup}>
+                            <View style={[styles.prefIconBg, { backgroundColor: '#FEF2F2' }]}>
+                                <Ionicons name="log-out" size={20} color="#EF4444" />
+                            </View>
+                            <Text style={[styles.prefLabel, { color: '#EF4444' }]}>Leave Group</Text>
+                            <Ionicons name="chevron-forward" size={20} color="#EF4444" />
+                        </TouchableOpacity>
+                    )}
                 </View>
 
                 {/* Logout */}

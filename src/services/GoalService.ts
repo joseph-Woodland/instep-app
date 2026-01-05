@@ -154,10 +154,10 @@ export const GoalService = {
         try {
             const userGoalId = `${userId}_${goalId}`;
             const userGoalRef = doc(db, 'userGoals', userGoalId);
-            const newCheckInRef = doc(collection(db, 'checkIns'));
-
             // 1. Write CheckIn
-            await setDoc(newCheckInRef, {
+            // const newCheckInRef = doc(collection(db, 'checkIns')); 
+            // await setDoc(newCheckInRef, { ... });
+            await addDoc(collection(db, 'checkIns'), {
                 userId,
                 goalId,
                 note,

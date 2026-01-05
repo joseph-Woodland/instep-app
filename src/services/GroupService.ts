@@ -569,6 +569,45 @@ export const GroupService = {
         }
     },
 
+    leaveGroup: async (userId: string, groupId: string): Promise<boolean> => {
+        try {
+            // 1. Find Membership
+            const userGroupsRef = collection(db, 'userGroups');
+            const q = query(
+                userGroupsRef,
+                where('userId', '==', userId),
+                where('groupId', '==', groupId),
+                limit(1)
+            );
+            const snap = await getDocs(q);
+
+            if (snap.empty) {
+                console.warn(`User ${userId} not in group ${groupId}`);
+                return false;
+            }
+
+            const membershipDoc = snap.docs[0];
+
+            // 2. Delete Membership
+            // Note: In real app, we might want soft-delete or archive
+            const batch = require('firebase/firestore').writeBatch(db);
+            batch.delete(membershipDoc.ref);
+
+            // 3. Decrement Group Count
+            const groupRef = doc(db, 'groups', groupId);
+            batch.update(groupRef, {
+                memberCount: increment(-1)
+            });
+
+            await batch.commit();
+            console.log(`User ${userId} left group ${groupId}`);
+            return true;
+        } catch (e) {
+            console.error("Leave Group Error:", e);
+            throw e;
+        }
+    },
+
     getGroupMembers: async (groupId: string): Promise<string[]> => {
         try {
             const userGroupsRef = collection(db, 'userGroups');
