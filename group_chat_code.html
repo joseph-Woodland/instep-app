@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Group Chat - Together App</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#19e65e",
+                        "primary-dark": "#14b84b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112116",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2e22",
+                        "text-main": "#0e1b12",
+                        "text-muted": "#6b8776",
+                        "accent-soft": "#dcfce7"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "2xl": "2.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar hide */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased h-screen flex flex-col overflow-hidden">
+<!-- Top App Bar -->
+<header class="flex-none bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm z-10 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+<div class="px-4 py-3 flex items-center justify-between">
+<button class="text-text-main dark:text-white hover:bg-black/5 dark:hover:bg-white/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center flex-1 mx-2 cursor-pointer">
+<h2 class="text-text-main dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Early Risers ☀️</h2>
+<span class="text-primary dark:text-primary text-xs font-semibold tracking-wide mt-0.5">Active now</span>
+</div>
+<button class="text-text-main dark:text-white hover:bg-black/5 dark:hover:bg-white/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[24px]">info</span>
+</button>
+</div>
+<!-- Guide Journey Mini-Drawer / Context -->
+<div class="px-4 pb-2">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl p-3 shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/20 text-primary-dark dark:text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+</div>
+<div class="flex flex-col">
+<span class="text-text-muted dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Current Goal</span>
+<span class="text-text-main dark:text-white text-sm font-bold">Day 3: Building Momentum</span>
+</div>
+</div>
+<button class="text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Chat Area -->
+<main class="flex-1 overflow-y-auto no-scrollbar flex flex-col px-4 py-4 gap-6 bg-background-light dark:bg-background-dark transition-colors duration-300">
+<!-- Meta Text: Date -->
+<div class="flex justify-center w-full">
+<span class="bg-surface-light dark:bg-surface-dark px-4 py-1.5 rounded-full text-xs font-medium text-text-muted dark:text-gray-400 shadow-sm border border-gray-100 dark:border-gray-800">
+                Today, Oct 24
+            </span>
+</div>
+<!-- Peer Message: Alex -->
+<div class="flex items-end gap-3 group">
+<div class="w-10 h-10 rounded-full shrink-0 bg-gray-200 dark:bg-gray-700 bg-cover bg-center overflow-hidden border-2 border-white dark:border-gray-800 shadow-sm" data-alt="Profile picture of a smiling young woman named Alex" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGqw7zsDdMJXvuA01VB7RCohZbhurTOZ-g6T6hs3Ntj7MpLeKozeNN_diIfOIi66d8f-SU5lvKM2aflK9kqjC5yLf4UYdc9XrM3MjYpAnQ8nn2lh31f2VuW25GbeTQ8kHHH1djurXLc-6kZaJ6aVMRV2GCY4kqkCG8AutpvH0LGQvjeIoJfG5o4zQRXtAZOHIzk7Bf6KpxFBfCMuqBVnmRApvTZXoTZWu2jK9Qj5g3J84-q4eIQEIVYWVW-jVZxbkz_dlCFJGT0AY");'>
+</div>
+<div class="flex flex-col items-start gap-1 max-w-[80%]">
+<span class="text-text-muted dark:text-gray-400 text-xs font-medium ml-4">Alex</span>
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-2xl rounded-bl-sm shadow-sm text-text-main dark:text-white text-[15px] leading-relaxed border border-gray-100 dark:border-gray-800">
+                    I managed to drink 2L of water today! Felt surprisingly good. 💧
+                </div>
+</div>
+</div>
+<!-- Inline Guide Prompt / Card -->
+<div class="flex justify-center w-full my-2">
+<div class="bg-gradient-to-br from-[#1a2e22] to-[#112116] dark:from-[#2a4535] dark:to-[#1a2e22] rounded-2xl p-5 max-w-sm w-full shadow-lg relative overflow-hidden group">
+<!-- Background decoration -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16 blur-xl"></div>
+<div class="relative z-10 flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<span class="bg-white/20 p-1.5 rounded-lg backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">psychology</span>
+</span>
+<span class="text-primary text-xs font-bold uppercase tracking-widest">Daily Reflection</span>
+</div>
+<p class="text-white text-lg font-bold leading-tight">What was one small thing that made you smile today?</p>
+</div>
+</div>
+</div>
+<!-- User Message (Self) -->
+<div class="flex items-end justify-end gap-3">
+<div class="flex flex-col items-end gap-1 max-w-[80%]">
+<div class="bg-primary text-text-main p-4 rounded-2xl rounded-br-sm shadow-sm text-[15px] font-medium leading-relaxed">
+                    That's awesome! I struggled a bit, but I went for a walk during lunch. 🚶‍♂️
+                </div>
+<span class="text-text-muted dark:text-gray-500 text-[11px] font-medium mr-1">Read by 3</span>
+</div>
+</div>
+<!-- Peer Message: Sarah -->
+<div class="flex items-end gap-3 group">
+<div class="w-10 h-10 rounded-full shrink-0 bg-gray-200 dark:bg-gray-700 bg-cover bg-center overflow-hidden border-2 border-white dark:border-gray-800 shadow-sm" data-alt="Profile picture of a woman named Sarah with glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB96BuWD49aS4t4GItI2yFeAVFx0Y3ww-UhhyGPg05JbQwL3P7PvAUG6CDSVhcSMjL7HUiisk7xpYNAniN6GIGQP9ts6vZBDidEGuH2Zyf1eIVuDTxyDSiIuQzRiz6D8Ps-FM_B0An051mI_ggMuPMKaw4H0TywtaY4QslMfyIqQ2cyrz0ovJbqVMp3_hw01nx0TvFTZoPezcaUyA3re2Q4O2O9CZ0TGx8RptkNYLpzNDPxmSu8WxywCPLdkRvcKzeiO2CipAxoAMM");'>
+</div>
+<div class="flex flex-col items-start gap-1 max-w-[80%]">
+<span class="text-text-muted dark:text-gray-400 text-xs font-medium ml-4">Sarah</span>
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-2xl rounded-bl-sm shadow-sm text-text-main dark:text-white text-[15px] leading-relaxed border border-gray-100 dark:border-gray-800">
+                    Walking is a huge win! One step at a time. Proud of you both! 🙌
+                </div>
+</div>
+</div>
+<!-- Spacer for scrolling -->
+<div class="h-4"></div>
+</main>
+<!-- Input Area -->
+<footer class="flex-none p-4 bg-background-light dark:bg-background-dark sticky bottom-0 z-20 transition-colors duration-300">
+<div class="flex items-end gap-3 bg-surface-light dark:bg-surface-dark p-2 rounded-full shadow-lg border border-gray-100 dark:border-gray-800">
+<button class="p-3 text-text-muted hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors flex-shrink-0">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<div class="flex-1 py-3">
+<input class="w-full bg-transparent border-none p-0 text-text-main dark:text-white placeholder-text-muted focus:ring-0 text-[16px]" placeholder="Share a small win..." type="text"/>
+</div>
+<button class="bg-primary hover:bg-primary-dark text-text-main p-3 rounded-full shadow-md transition-all active:scale-95 flex-shrink-0 flex items-center justify-center group">
+<span class="material-symbols-outlined group-hover:translate-x-0.5 transition-transform">send</span>
+</button>
+</div>
+<!-- Safe area for iOS home indicator -->
+<div class="h-2"></div>
+</footer>
+</body></html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding Goal Screen</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#19e6a2",
+              "primary-dark": "#12a675",
+              "background-light": "#f6f8f7",
+              "background-dark": "#11211c",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1a2c26",
+            },
+            fontFamily: {
+              "display": ["Be Vietnam Pro", "Noto Sans", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "2xl": "2rem",
+              "full": "9999px"
+            },
+            boxShadow: {
+                'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                'glow': '0 0 15px rgba(25, 230, 162, 0.3)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Hide scrollbar for clean mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0e1b17] dark:text-gray-100 font-display transition-colors duration-200">
+<div class="relative min-h-screen w-full flex flex-col mx-auto max-w-md overflow-hidden bg-background-light dark:bg-background-dark shadow-2xl">
+<!-- Header / Progress -->
+<div class="pt-6 pb-2 px-6 flex items-center justify-center w-full">
+<div class="flex flex-row items-center gap-2">
+<div class="h-1.5 w-8 rounded-full bg-primary shadow-glow"></div>
+<div class="h-1.5 w-8 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+<div class="h-1.5 w-8 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto no-scrollbar pb-32">
+<!-- Headlines -->
+<div class="px-6 pt-6 pb-2">
+<h1 class="text-[#0e1b17] dark:text-white tracking-tight text-[32px] font-bold leading-tight text-left">
+                    Let's find your path.
+                </h1>
+<p class="text-gray-600 dark:text-gray-400 text-base font-normal leading-relaxed pt-2">
+                    Pick a goal to find your supportive circle.
+                </p>
+</div>
+<!-- Goal Grid -->
+<div class="grid grid-cols-2 gap-4 px-6 py-6">
+<!-- Card 1: Selected State -->
+<div class="relative group cursor-pointer">
+<div class="absolute inset-0 bg-primary/10 dark:bg-primary/20 rounded-2xl border-2 border-primary transition-all duration-300"></div>
+<div class="relative flex flex-col gap-3 p-3 h-full">
+<div class="w-full aspect-square rounded-xl overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Person tying running shoes outdoors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3d680w1YBoj6gtgHHcRTptN7-wKYQiNXbb0pB8P-DtQHY9UWswJ93rzHJn4Wtn9Zwux_j1m1MCo1nSlPa23qnYYzNfGvg32DeE4bKOHRtVuTTYUzSGOPmUjuIeRAvlQ7DW3QZ4VMZv0dGUYxHmOue8NTmJj9i80xXO_Kymx7dywkdwE8LUNeUI-iBbRj2OQsj1sOTjX1zsubr6d6nt-60GWvsSeo_Qw0WV9eRg9GvXVOF2Aqgg-6Q3auJ7EpUFN1181iE0oKpBhA");'>
+</div>
+<!-- Checkmark Badge for Selected -->
+<div class="absolute top-2 right-2 bg-primary text-white rounded-full p-1 shadow-md">
+<span class="material-symbols-outlined text-sm font-bold block">check</span>
+</div>
+</div>
+<div>
+<p class="text-[#0e1b17] dark:text-white text-base font-semibold leading-tight">Get Active</p>
+<p class="text-primary-dark dark:text-primary text-xs font-medium mt-1">Running, Yoga</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="relative group cursor-pointer opacity-80 hover:opacity-100 transition-opacity">
+<div class="absolute inset-0 bg-surface-light dark:bg-surface-dark rounded-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 shadow-sm transition-all duration-300"></div>
+<div class="relative flex flex-col gap-3 p-3 h-full">
+<div class="w-full aspect-square rounded-xl overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Close up of hands typing on a laptop keyboard" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQzFjtHMGUyIg7sV5ot9OQVMw4xozyqRLqXaMDIJnlPakWWXjT3lU96SGTqDYrz-wpJMu86fH_fpGBpqDaoennfCP76vEMxDF58qd_RcPg6YkKsNqs8BRQ42QEgzgj20nX-uMAicLQGiYC46FXsm01NTTo8i_v4aPNAZw2BZ23frfdlHXBi16tGuYD2oZ3Js2R9PNABMVrGRGWiLKcKcz8EevSom--1iBOuDGzVnI4O-g_guU0yyMGXya1LE7Z6VNNQvPayMt36No");'>
+</div>
+</div>
+<div>
+<p class="text-[#0e1b17] dark:text-white text-base font-semibold leading-tight">Learn a Skill</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-medium mt-1">Language, Code</p>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="relative group cursor-pointer opacity-80 hover:opacity-100 transition-opacity">
+<div class="absolute inset-0 bg-surface-light dark:bg-surface-dark rounded-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 shadow-sm transition-all duration-300"></div>
+<div class="relative flex flex-col gap-3 p-3 h-full">
+<div class="w-full aspect-square rounded-xl overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Coffee cup and notebook on a sunny morning table" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRy48WqcUy51p71p3cv7wOqWB6XsVXfb2jNulMtYYsXi4U2r55wfM3mCRxDpF5iXz1lQ5Ey6kv8QgpV6ypUAqbaOAfmJMG5iz0NmEpclDxYc8l7ByI4Cr4DK30moLHoV7otX3hXWJrkNmSY6oGvA7yGozrDnMhunqUwJMrqjiAsXhepi2FlGwl10tuNgkiOGEKyDKwfQsAzH8U1YifZviJFt1N6KG6aXfy19CBOoBrGb1WkgsaoahQOw9krWhh5LBijJKDvO8OYYk");'>
+</div>
+</div>
+<div>
+<p class="text-[#0e1b17] dark:text-white text-base font-semibold leading-tight">Morning Routine</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-medium mt-1">Meditation, Journal</p>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="relative group cursor-pointer opacity-80 hover:opacity-100 transition-opacity">
+<div class="absolute inset-0 bg-surface-light dark:bg-surface-dark rounded-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 shadow-sm transition-all duration-300"></div>
+<div class="relative flex flex-col gap-3 p-3 h-full">
+<div class="w-full aspect-square rounded-xl overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Artist painting on a canvas with colorful palette" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8c5OD7Na3ggakXCCGcoMxQndlXPL9b60c0GI7VVWxkjqc4oAe2l5Bki1j__DhU7MKl8-sQbq62_w-iRz-yUO9cCPlWTaXRdtoAAWjnUZkJjep6ZoLDWwB7XydtfLMRLNsfXJHwsB6mpCs_Cao7cMsf54C4rZpYFT-7T3onRjLebmR_kd6zchrd5g-q4HD303Y-ujOMRwfcAxFGHpYaTXCVVdNf3a_NxNMT-gVJEg3MtG2HlsuiqZUXVbJK1EyOLNJvJZ90cLya64");'>
+</div>
+</div>
+<div>
+<p class="text-[#0e1b17] dark:text-white text-base font-semibold leading-tight">Creative Work</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-medium mt-1">Writing, Art</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Experience Level -->
+<div class="px-6 pb-6">
+<h2 class="text-[#0e1b17] dark:text-white text-lg font-bold leading-tight px-1 text-left pb-4">
+                    How familiar are you with this?
+                </h2>
+<div class="flex gap-3 w-full">
+<!-- Option 1: Selected -->
+<button class="flex-1 py-4 px-4 bg-surface-light dark:bg-surface-dark border-2 border-primary rounded-xl shadow-soft flex flex-col items-center justify-center gap-2 group transition-all">
+<span class="material-symbols-outlined text-primary text-3xl">spa</span>
+<span class="text-sm font-semibold text-[#0e1b17] dark:text-white">Just Starting</span>
+</button>
+<!-- Option 2: Inactive -->
+<button class="flex-1 py-4 px-4 bg-surface-light dark:bg-surface-dark border border-transparent hover:border-gray-200 dark:hover:border-gray-700 rounded-xl shadow-sm flex flex-col items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-all">
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-3xl">fitness_center</span>
+<span class="text-sm font-medium text-gray-600 dark:text-gray-300">I have a routine</span>
+</button>
+</div>
+</div>
+<!-- Guide Opt-In -->
+<div class="px-6 pb-8">
+<div class="bg-primary/10 dark:bg-primary/5 rounded-2xl p-5 flex items-start justify-between gap-4 border border-primary/20">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-dark dark:text-primary text-xl">smart_toy</span>
+<h3 class="text-[#0e1b17] dark:text-white font-bold text-base">Add a supportive Guide?</h3>
+</div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-snug">
+                            A friendly bot to check in on you twice a week. No pressure.
+                        </p>
+</div>
+<!-- Toggle Switch -->
+<div class="relative inline-flex items-center cursor-pointer pt-1">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[6px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer CTA -->
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background-light via-background-light to-transparent dark:from-background-dark dark:via-background-dark pt-12">
+<button class="w-full bg-primary hover:bg-[#15d495] active:scale-[0.98] text-[#0e1b17] font-bold text-lg py-4 rounded-xl shadow-glow transition-all duration-200 flex items-center justify-center gap-2">
+                Continue
+                <span class="material-symbols-outlined text-xl font-bold">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Together - Redeem Invite Code</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#19e65e", // Bright mint green
+                        "primary-dark": "#12a845",
+                        "background-light": "#f6f8f6", // Off-white/pale mint tint
+                        "background-dark": "#112116", // Deep forest green
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2e22",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "1.5rem", 
+                        "xl": "2rem", 
+                        "2xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(25, 230, 94, 0.15)',
+                        'glow': '0 0 20px rgba(25, 230, 94, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom smooth gradient animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased transition-colors duration-300 selection:bg-primary/30">
+<!-- Main Container -->
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden">
+<!-- Background Soft Blobs -->
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[40%] bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[40%] bg-blue-400/5 dark:bg-blue-400/10 rounded-full blur-[120px] pointer-events-none"></div>
+<!-- Header -->
+<header class="relative z-20 flex items-center justify-between px-6 pt-6 pb-2">
+<button aria-label="Go back" class="flex items-center justify-center w-10 h-10 rounded-full bg-white/60 dark:bg-surface-dark/60 hover:bg-white dark:hover:bg-surface-dark transition-all text-slate-800 dark:text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<!-- Optional: Progress indicator or Logo could go here, keeping it clean for now -->
+<div class="w-10"></div>
+</header>
+<!-- Scrollable Content -->
+<main class="flex-1 flex flex-col items-center w-full max-w-md mx-auto px-6 relative z-10">
+<!-- Hero Illustration -->
+<div class="w-full flex justify-center py-8">
+<div class="relative w-full aspect-[4/3] max-h-[280px] rounded-3xl overflow-hidden shadow-sm animate-float group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
+<!-- Image with data-alt -->
+<div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105" data-alt="Group of friends smiling and embracing outdoors in warm sunlight" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA1nJJaQmwHd8TwNEffj5lH-jsCsejdgBTYyGc2VaUVzF7w3JQCdqX_5CqY3ChYcMbb_tHlZYxnJtqlS4HyXCxbkfSuwVjJmzVW4WNDHuUmKSbPyEZFBhZmc0H-hIQMzYuU7r69xpyws-rJ1_4UEtXcT99paRJmw0wGNAznz1BWRr-q7HwVwEFawQ9UE0OrSx78FOhVD4QAmK9Nic0YPakai5chZV9lfPjYAkVeP8TG5Cr14Evcnz_YD3YLuys9cC2_qx9od7orlHw");'>
+</div>
+<!-- Floating Badge on Image -->
+<div class="absolute bottom-4 left-4 z-20 inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/90 dark:bg-black/60 backdrop-blur-md rounded-full border border-white/20">
+<span class="material-symbols-outlined text-[16px] text-primary">lock</span>
+<span class="text-xs font-semibold text-slate-800 dark:text-white">Private Circle</span>
+</div>
+</div>
+</div>
+<!-- Text Content -->
+<div class="w-full text-center space-y-3 mb-8">
+<h1 class="text-[32px] font-extrabold leading-tight text-slate-900 dark:text-white tracking-tight">
+                    Join your circle
+                </h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-medium leading-relaxed max-w-[280px] mx-auto">
+                    Enter the code shared by your friend or group leader. You’re just a step away.
+                </p>
+</div>
+<!-- Input Section -->
+<div class="w-full space-y-6">
+<div class="relative group">
+<label class="sr-only" for="invite-code">Invite Code</label>
+<div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 group-focus-within:text-primary transition-colors">vpn_key</span>
+</div>
+<input autocomplete="off" class="w-full h-16 pl-12 pr-4 rounded-2xl bg-white dark:bg-surface-dark border-0 ring-1 ring-slate-200 dark:ring-slate-700 text-center text-xl font-bold tracking-widest text-slate-800 dark:text-white placeholder:text-slate-300 dark:placeholder:text-slate-600 placeholder:font-normal placeholder:tracking-normal focus:ring-2 focus:ring-primary focus:bg-primary/5 dark:focus:bg-primary/5 transition-all shadow-sm" id="invite-code" placeholder="Ex: TGH-2024" type="text"/>
+<!-- Success/Validation hint (hidden by default, can be toggled) -->
+<!-- <div class="absolute -bottom-6 left-0 w-full text-center text-xs font-medium text-orange-400">Can't find that code. Try again?</div> -->
+</div>
+<!-- Reassurance Badge -->
+<div class="flex justify-center">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 dark:bg-primary/5 rounded-full">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span class="text-sm font-semibold text-primary-dark dark:text-primary">Safe, supportive &amp; private space</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<div class="w-full p-6 pb-8 z-20">
+<!-- Keyboard avoiding logic would handle spacing here in a real app -->
+<button class="w-full h-14 bg-primary hover:bg-[#15d655] active:scale-[0.98] transition-all duration-200 rounded-full flex items-center justify-center gap-2 shadow-soft group">
+<span class="text-slate-900 font-bold text-lg">Join Group</span>
+<span class="material-symbols-outlined text-slate-900 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<p class="text-center mt-4 text-xs text-slate-400 dark:text-slate-500 font-medium">
+                Don't have a code? <a class="text-primary hover:underline" href="#">Start your own circle</a>
+</p>
+</div>
+</div>
+</body></html>

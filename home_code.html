@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Together - Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec5b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased">
+<!-- Mobile Container -->
+<div class="relative flex h-screen max-h-screen w-full max-w-md mx-auto flex-col justify-between overflow-hidden bg-background-light dark:bg-background-dark shadow-2xl">
+<!-- Top Section: Logo & Image -->
+<div class="flex-1 flex flex-col items-center pt-8 overflow-y-auto no-scrollbar">
+<!-- Logo/Brand -->
+<div class="w-full text-center px-4 mb-4">
+<div class="inline-flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl font-bold">spa</span>
+<h2 class="text-[#0d1b12] dark:text-white tracking-tight text-xl font-bold leading-tight">Together</h2>
+</div>
+</div>
+<!-- Hero Image Area -->
+<div class="w-full px-6 py-4 flex-shrink-0">
+<div class="relative w-full aspect-[4/5] max-h-[45vh] overflow-hidden rounded-2xl bg-primary/10 dark:bg-primary/5 flex items-center justify-center">
+<!-- Decorative Abstract Shapes Background -->
+<div class="absolute inset-0 w-full h-full opacity-60 dark:opacity-40" data-alt="Soft abstract gradients in mint green and pale blue forming organic bubbly shapes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOH0ErJfV7qUqO7gThRWEZ2l6IEV23UuOu__scCsg8bBE8M5_8Ff48F3pN6lRKTelfDFr7FLbgonwnp4X5SqnZpUIJJC4JTWEUJpmNuI5Nl55D6yvrE6ATfvGYLcNSpsFKpyrzcYXhseLJ0DtcoT2k_u9G_4JZe4mNLYln6hA0YS6nRK53LZiGxRlUoq-xxiLCuSsJQH0HWlwvS7ChTSx9cZCnw862nSK0UqD-xt53ICbaPOd6cqO6S5nlHCrClpFlS4SmK08Eym8'); background-size: cover; background-position: center;">
+</div>
+<!-- Overlay Image for Connection -->
+<div class="relative z-10 w-full h-full bg-cover bg-center rounded-2xl mix-blend-overlay opacity-90" data-alt="Group of friends sitting in a circle on grass laughing together in soft lighting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVYX2nik9VhHuIu76HQnr9lyx7wsFAi5DXQe6F4hDE5NkCvxw_FpXUiGjw93OPAbye5xIn7P8muOoLh269D8M2tqSD7jDxj-ICYyjAojTae3xGsV6rK6J32L56GvbXqvKVTczpWIufl80M4eNC0rev1Uj1xnsp13teMMNTfAqmIbj-agYCuEgqoYp1huKfFVLenbi6lF7SDUoctgtgwHgDPRK7rifgQ6C1u2Z-UJ7GQycd8H-_Lt0Q73RRCrUvv2qaMfhgUOsHWoQ');">
+</div>
+<!-- Soft Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-background-light/50 to-transparent dark:from-background-dark/50"></div>
+</div>
+</div>
+<!-- Main Text Content -->
+<div class="flex flex-col items-center px-6 mt-4 pb-4">
+<h1 class="text-[#0d1b12] dark:text-white tracking-tight text-[32px] font-bold leading-[1.15] text-center mb-4">
+                    You don't have<br/>to do it alone.
+                </h1>
+<p class="text-[#0d1b12]/70 dark:text-white/70 text-base font-normal leading-relaxed text-center max-w-[280px]">
+                    Find your supportive circle and achieve your goals, one step at a time.
+                </p>
+</div>
+</div>
+<!-- Bottom Section: Actions -->
+<div class="w-full px-6 pb-8 pt-4 bg-background-light dark:bg-background-dark z-20">
+<!-- Primary Button -->
+<button class="w-full flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 bg-primary text-[#0d1b12] text-lg font-bold leading-normal tracking-wide hover:opacity-90 transition-opacity mb-4 shadow-lg shadow-primary/20">
+<span class="truncate">Get Started</span>
+</button>
+<!-- Secondary Link -->
+<div class="flex justify-center items-center gap-1">
+<span class="text-[#0d1b12]/50 dark:text-white/50 text-sm">Already have an account?</span>
+<a class="text-[#0d1b12] dark:text-white text-sm font-semibold hover:underline" href="#">Log in</a>
+</div>
+</div>
+</div>
+</body></html>

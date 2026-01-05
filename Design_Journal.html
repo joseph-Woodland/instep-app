@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Together - Journal &amp; Reflections</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3b82f6", // Soft vivid blue
+                        "primary-soft": "#eff6ff", // Very light blue background
+                        "background": "#fafafa", // Off-white warm background
+                        "surface": "#ffffff",
+                        "accent-mint": "#34d399", 
+                        "accent-mint-bg": "#ecfdf5",
+                        "accent-sand": "#fbbf24",
+                        "accent-sand-bg": "#fffbeb",
+                        "accent-blue": "#60a5fa",
+                        "accent-blue-bg": "#eff6ff",
+                        "text-main": "#1e293b", // Slate 800
+                        "text-muted": "#64748b", // Slate 500
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "2xl": "2.5rem", "full": "9999px"},
+                    boxShadow: {
+                        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+                        "glow": "0 0 15px rgba(59, 130, 246, 0.3)"
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .timeline-line {
+            background: linear-gradient(180deg, rgba(203, 213, 225, 0) 0%, rgba(203, 213, 225, 1) 15%, rgba(203, 213, 225, 1) 85%, rgba(203, 213, 225, 0) 100%);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-main font-display antialiased overflow-x-hidden min-h-screen flex flex-col relative selection:bg-primary/20">
+<div class="fixed top-0 left-0 w-full h-96 bg-blue-100/40 blur-[120px] pointer-events-none rounded-full -translate-y-1/2 z-0"></div>
+<div class="fixed bottom-0 right-0 w-80 h-80 bg-green-100/40 blur-[100px] pointer-events-none rounded-full translate-y-1/3 z-0"></div>
+<header class="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-slate-100 transition-colors duration-300">
+<div class="flex items-center justify-between px-4 py-3">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-slate-100 transition-colors text-text-muted">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight text-text-main">Reflections</h1>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-slate-100 transition-colors text-text-muted">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<main class="flex-1 w-full max-w-lg mx-auto pb-24 relative z-10">
+<div class="sticky top-[60px] z-30 flex justify-center w-full py-4 pointer-events-none">
+<div class="bg-white/80 backdrop-blur shadow-soft text-text-main px-5 py-2.5 rounded-full border border-slate-100 flex items-center gap-2 pointer-events-auto transition-transform hover:scale-105 cursor-pointer ring-1 ring-slate-100">
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Today</span>
+<span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+<span class="text-sm font-semibold text-slate-700">October 24</span>
+<span class="material-symbols-outlined text-sm ml-1 text-slate-400">expand_more</span>
+</div>
+</div>
+<div class="relative px-5 mt-4">
+<div class="absolute left-[29px] top-0 bottom-0 w-[2px] timeline-line z-0"></div>
+<div class="relative pl-10 mb-12 group">
+<div class="absolute left-0 top-6 w-4 h-4 rounded-full bg-primary border-[3px] border-white shadow-glow z-10 ring-2 ring-blue-50"></div>
+<div class="flex flex-col gap-3">
+<span class="text-primary text-xs font-bold uppercase tracking-widest pl-1 mt-6">Active Now</span>
+<div class="relative overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-soft transition-all hover:shadow-lg hover:border-blue-200 group-hover:-translate-y-0.5 duration-300">
+<div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-[100px] pointer-events-none opacity-60"></div>
+<div class="p-6 flex flex-col gap-5 relative z-10">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2.5">
+<div class="bg-orange-100 p-1.5 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-500 text-lg">wb_sunny</span>
+</div>
+<h3 class="text-lg font-bold text-text-main leading-tight">Daily Check-in</h3>
+</div>
+<p class="text-text-muted text-sm leading-relaxed pl-10">Take a moment to pause. How are you really feeling right now?</p>
+</div>
+<button class="flex items-center justify-center h-11 px-6 rounded-xl bg-primary hover:bg-blue-600 text-white text-sm font-semibold transition-all shadow-md shadow-blue-200 w-full sm:w-auto self-start gap-2">
+<span>Start Reflection</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="relative pl-10 mb-12 group">
+<div class="absolute left-[2px] top-8 w-3 h-3 rounded-full bg-slate-200 border-2 border-white ring-2 ring-slate-50 z-10"></div>
+<div class="flex flex-col gap-3">
+<span class="text-slate-400 text-xs font-bold uppercase tracking-widest pl-1">Midday Moment</span>
+<div class="relative rounded-2xl overflow-hidden shadow-soft group-hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 bg-white">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Abstract soft gradient with warm orange and deep purple hues representing calm progress" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCLAm5DAUe65ZZY67-p5fDtfyigg4OY8mMqhdGKBfiGQTe_SB0kfDkmHFnktbPC5zFFwm1JKIwPLmv6_jXCqrjVxP_aFoHwuZ85EHd43T4Jl0WG79ZFCFvGVUIB50RDrhh32l4QZtLk-Kw9Z_S0hK0vE5rsMCf97DgB5luSFVfo9gv8FRJ9-iZQvfafHSlQohzzERX9a1Cn6J1jORKpSdV-y3vX2auUGSuILKORe51C3yy_Npcb_yfT-pQAokyj1RdhB3tbh_W5mqo');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+<div class="relative z-10 p-6 pt-32 flex flex-col gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/30 backdrop-blur-md border border-white/40 w-fit shadow-sm">
+<span class="material-symbols-outlined text-white text-[14px]">auto_awesome</span>
+<span class="text-[10px] font-bold text-white uppercase tracking-wide">Daily Affirmation</span>
+</span>
+<h3 class="text-white text-xl font-bold leading-snug tracking-tight drop-shadow-sm">"Progress is quiet. It happens in the moments you choose to keep going."</h3>
+<div class="flex justify-between items-center mt-3 pt-3 border-t border-white/20">
+<p class="text-white/90 text-xs font-medium">Tap to save to collection</p>
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white">
+<span class="material-symbols-outlined text-lg">bookmark_border</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative pl-10 mb-12 group">
+<div class="absolute left-[2px] top-8 w-3 h-3 rounded-full bg-accent-mint border-2 border-white ring-2 ring-green-50 z-10"></div>
+<div class="flex flex-col gap-3">
+<span class="text-slate-400 text-xs font-bold uppercase tracking-widest pl-1">Yesterday</span>
+<div class="rounded-2xl border border-slate-100 bg-white p-5 shadow-soft relative overflow-hidden group-hover:shadow-md transition-all">
+<div class="flex gap-4">
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-accent-mint shadow-[0_0_8px_rgba(52,211,153,0.6)]"></span>
+<span class="text-slate-500 text-xs font-bold uppercase tracking-wide">Get Active</span>
+</div>
+<div>
+<h4 class="text-text-main text-base font-bold mb-1">Morning Run in the Park</h4>
+<p class="text-text-muted text-sm leading-relaxed line-clamp-2">The air was crisp and it felt amazing to just move my body before the meetings started. Hit 5k!</p>
+</div>
+</div>
+<div class="w-20 h-20 rounded-xl bg-cover bg-center shrink-0 shadow-sm border border-slate-100" data-alt="A blurry photo of running shoes on a park path" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6ebm88XDTI-Cgjfr61mCljtmSB7PVncXUnNoO3qFKKDjaByWdz7aNX74qVevhWu8B0kUFJbyiyu-tobBxECjXbEOFC2APbCAV-MskcK3RQSt1AKcDUjP3UqGRWlzCxupcFO1T03eX_P7TLUXXBKLgtkLzFI_fr2LDGNIbp5sqgwr5FlesMu_OX9vlI3sfNuY2K0EAvYbx2TyZXb_k_voyaUhVLHQCD5GY6jb-fy4bUn6YyP6CHgMON3I-OWGuPAvwq6uJKrLHGHQ');"></div>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-50 flex items-center gap-4 text-xs text-slate-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 7:30 AM</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] fill-1 text-yellow-400">sentiment_satisfied</span> Feeling Good</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative pl-10 mb-10 group">
+<div class="absolute left-[2px] top-8 w-3 h-3 rounded-full bg-accent-sand border-2 border-white ring-2 ring-amber-50 z-10"></div>
+<div class="flex flex-col gap-3">
+<span class="text-slate-400 text-xs font-bold uppercase tracking-widest pl-1">Oct 12</span>
+<div class="rounded-2xl border border-slate-100 bg-white p-5 shadow-soft relative overflow-hidden group-hover:shadow-md transition-all">
+<div class="flex gap-4">
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-accent-sand shadow-[0_0_8px_rgba(251,191,36,0.6)]"></span>
+<span class="text-slate-500 text-xs font-bold uppercase tracking-wide">Daily Habits</span>
+</div>
+<div>
+<h4 class="text-text-main text-base font-bold mb-1">Read 10 Pages</h4>
+<p class="text-text-muted text-sm leading-relaxed">Finally finished that chapter on atomic habits. Key takeaway: environment matters more than motivation.</p>
+</div>
+</div>
+<div class="w-16 h-16 rounded-xl bg-accent-sand-bg border border-amber-100 flex items-center justify-center shrink-0 text-amber-500">
+<span class="material-symbols-outlined text-3xl">menu_book</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative pl-10 flex items-center gap-3 opacity-60 pb-8">
+<div class="w-2 h-2 bg-slate-300 rounded-full"></div>
+<span class="text-xs text-slate-400 font-medium">You've reached the start of your journey</span>
+</div>
+</div>
+</main>
+<div class="fixed bottom-24 right-5 z-40">
+<button class="flex items-center justify-center w-14 h-14 rounded-full bg-primary text-white shadow-lg shadow-blue-500/30 hover:scale-110 active:scale-95 transition-all duration-300 ring-2 ring-white">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<nav class="fixed bottom-0 w-full z-50 bg-white/90 backdrop-blur-xl border-t border-slate-200 pb-safe shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.05)]">
+<div class="flex justify-around items-center h-16 max-w-lg mx-auto px-2">
+<button class="flex flex-col items-center justify-center w-16 h-full gap-1 text-slate-400 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[26px] group-hover:-translate-y-0.5 transition-transform">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center w-16 h-full gap-1 text-primary relative">
+<div class="absolute -top-1 w-8 h-1 bg-primary rounded-b-full"></div>
+<span class="material-symbols-outlined text-[26px] fill-current drop-shadow-sm">history_edu</span>
+<span class="text-[10px] font-bold">Journal</span>
+</button>
+<button class="flex flex-col items-center justify-center w-16 h-full gap-1 text-slate-400 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[26px] group-hover:-translate-y-0.5 transition-transform">chat_bubble_outline</span>
+<span class="text-[10px] font-medium">Chat</span>
+</button>
+<button class="flex flex-col items-center justify-center w-16 h-full gap-1 text-slate-400 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[26px] group-hover:-translate-y-0.5 transition-transform">person_outline</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</nav>
+<div class="h-6 w-full"></div>
+
+</body></html>

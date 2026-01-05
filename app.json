@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "together-app",
-    "slug": "together-app",
+    "name": "InStep",
+    "slug": "instep",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
