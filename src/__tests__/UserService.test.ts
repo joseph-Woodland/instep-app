@@ -11,7 +11,7 @@ describe('UserService', () => {
             await UserService.updateUserProfile('user1', { name: 'New Name' });
 
             expect(setDoc).toHaveBeenCalledWith(
-                undefined, // docRef result (mocked)
+                expect.anything(), // docRef
                 expect.objectContaining({
                     name: 'New Name',
                 }),
