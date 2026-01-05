@@ -133,8 +133,6 @@ export const GroupService = {
                 const goalDef = getGoalById(goalId);
                 const goalName = goalDef ? goalDef.name : 'Unknown Goal';
                 // Generate a simple ID
-                const newGroupRef = doc(collection(db, 'groups')); // Auto-ID
-                assignedGroupId = newGroupRef.id;
                 assignedGroupName = `${goalName} Group`;
 
                 // NOTE: In tests, doc(collection) might throw if stricter mocks are used, but we are using doc(coll) to generate ID then setDoc.
@@ -527,7 +525,6 @@ export const GroupService = {
 
             // Let's fix `respondToInvite` to use `addDoc` for membership.
 
-            const memQ = query(userGroupsRef, where('userId', '==', userId), where('groupId', '==', invite.groupId), limit(1));
             const memSnap = await getDocs(memQ);
             if (!memSnap.empty) {
                 return { success: true, status: 'joined', message: "Already a member.", groupId: invite.groupId, goalId: invite.goalId };
