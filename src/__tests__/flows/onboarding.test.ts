@@ -28,7 +28,7 @@ describe('Scenario: New User Onboarding', () => {
         // Verification: Membership created
         // We need to scan userGroups for this user
         const memberships = mockFirestore.query('userGroups', [
-            { type: 'where', field: 'userId', value: user.id }
+            { type: 'where', field: 'userId', op: '==', value: user.id }
         ]);
         expect(memberships).toHaveLength(1);
         expect(memberships[0].groupId).toBe(groupId);
@@ -56,7 +56,7 @@ describe('Scenario: New User Onboarding', () => {
 
         // Check if DB was validly accessed
         const memberships = mockFirestore.query('userGroups', [
-            { type: 'where', field: 'userId', value: user.id }
+            { type: 'where', field: 'userId', op: '==', value: user.id }
         ]);
         expect(memberships).toHaveLength(1);
         expect(memberships[0].groupId).toBe('g1');

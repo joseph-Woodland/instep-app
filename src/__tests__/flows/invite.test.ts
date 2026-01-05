@@ -39,8 +39,8 @@ describe('Scenario: Invite & Join', () => {
 
         // 4. Verify Membership
         const memberships = mockFirestore.query('userGroups', [
-            { type: 'where', field: 'userId', value: guest.id },
-            { type: 'where', field: 'groupId', value: groupId }
+            { type: 'where', field: 'userId', op: '==', value: guest.id },
+            { type: 'where', field: 'groupId', op: '==', value: groupId }
         ]);
         expect(memberships).toHaveLength(1);
 

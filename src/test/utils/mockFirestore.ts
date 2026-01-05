@@ -1,6 +1,9 @@
 /**
  * A simple in-memory implementation of Firestore for testing flows.
  */
+/**
+ * A simple in-memory implementation of Firestore for testing flows.
+ */
 class MockFirestore {
     data: Record<string, Record<string, any>> = {};
 
@@ -21,20 +24,47 @@ class MockFirestore {
             // Merge keys individually to support field transforms (like increment)
             for (const key in data) {
                 const value = data[key];
-                // Check for our custom increment sentinel
-                if (value && typeof value === 'object' && value.__isIncrement) {
-                    const currentVal = existing[key] || 0;
-                    newData[key] = currentVal + value.value;
-                } else {
-                    newData[key] = value;
+
+                // Handle sentinels
+                if (value && typeof value === 'object') {
+                    if (value.__isIncrement) {
+                        const currentVal = existing[key] || 0;
+                        newData[key] = currentVal + value.value;
+                        continue;
+                    }
+                    if (value.__isArrayUnion) {
+                        const currentArr = Array.isArray(existing[key]) ? existing[key] : [];
+                        // Naive union: concat then unique
+                        const set = new Set([...currentArr, ...value.items]);
+                        newData[key] = Array.from(set);
+                        continue;
+                    }
+                    if (value.__isServerTimestamp) {
+                        // resolve to time
+                        newData[key] = {
+                            toMillis: () => Date.now(),
+                            seconds: Math.floor(Date.now() / 1000)
+                        };
+                        continue;
+                    }
                 }
+
+                // Normal value
+                newData[key] = value;
             }
         } else {
-            // Even in non-merge set, we might (rarely) see sentinels but usually setDoc wipes doc.
-            // But if we use setDoc(..., { merge: true }), we fall into block above.
-            // If strictly setDoc(doc), then it's a replacement. We assume no sentinels for pure replacement usually,
-            // or if they exist, they behave same.
+            // Replacement set. 
+            // We should still scan for serverTimestamp sentinels though.
             newData = { ...data };
+            for (const key in newData) {
+                const value = newData[key];
+                if (value && typeof value === 'object' && value.__isServerTimestamp) {
+                    newData[key] = {
+                        toMillis: () => Date.now(),
+                        seconds: Math.floor(Date.now() / 1000)
+                    };
+                }
+            }
         }
 
         this.data[path] = newData;
@@ -45,30 +75,62 @@ class MockFirestore {
     }
 
     query(collectionPath: string, constraints: any[]) {
-        const results = [];
+        let results = [];
         for (const key in this.data) {
             if (key.startsWith(collectionPath + '/')) {
-                // Ensure it's a direct child? our mock uses flat paths so "groups/g1/messages/m1" 
-                // startsWith "groups" but is not child of "groups".
-                // We need to check segment count. 
-                // collectionPath "groups", key "groups/g1" -> valid.
-                // collectionPath "groups", key "groups/g1/messages/m1" -> invalid.
-
+                // Check if direct child
                 const relative = key.substring(collectionPath.length + 1);
-                if (relative.includes('/')) continue; // Deep child
+                if (relative.includes('/')) continue;
 
                 const docData = this.data[key];
                 let match = true;
 
                 for (const c of constraints) {
                     if (c.type === 'where') {
-                        if (docData[c.field] !== c.value) match = false;
+                        const val = docData[c.field];
+                        const target = c.value;
+
+                        switch (c.op) {
+                            case '==': if (val !== target) match = false; break;
+                            case '!=': if (val === target) match = false; break;
+                            case '>': if (!(val > target)) match = false; break;
+                            case '>=': if (!(val >= target)) match = false; break;
+                            case '<': if (!(val < target)) match = false; break;
+                            case '<=': if (!(val <= target)) match = false; break;
+                            case 'in': if (!target.includes(val)) match = false; break;
+                            case 'array-contains':
+                                if (!Array.isArray(val) || !val.includes(target)) match = false;
+                                break;
+                            default:
+                                throw new Error(`MockFirestore: Unimplemented query op in runner: ${c.op}`);
+                        }
                     }
-                    // mock other constraints if needed
                 }
                 if (match) results.push({ id: key.split('/').pop(), ...docData });
             }
         }
+
+        // Handle orderBy
+        const orderBy = constraints.find(c => c.type === 'orderBy');
+        if (orderBy) {
+            results.sort((a, b) => {
+                const field = orderBy.field;
+                const valA = a[field];
+                const valB = b[field];
+
+                // Simple comparisons
+                if (valA < valB) return orderBy.dir === 'desc' ? 1 : -1;
+                if (valA > valB) return orderBy.dir === 'desc' ? -1 : 1;
+                return 0;
+            });
+        }
+
+        // Handle limit
+        const limit = constraints.find(c => c.type === 'limit');
+        if (limit) {
+            results = results.slice(0, limit.n);
+        }
+
         return results;
     }
 }

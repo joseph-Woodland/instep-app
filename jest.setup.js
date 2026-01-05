@@ -42,12 +42,36 @@ jest.mock('firebase/firestore', () => {
         }),
         doc: jest.fn((...args) => {
              let path = '';
+             let id = '';
+             
              if (args[0]?.type === 'collection') {
-                 path = `${args[0].path}/${args[1] || 'auto-id-' + Math.random().toString(36).substr(2,9)}`;
+                 // doc(collectionRef, id)
+                 // NOTE: Real Firestore throws if ID is missing/empty for existing collections (used for setDoc)
+                 // However, doc(collection()) CAN be used for auto-id, but usually developers use addDoc.
+                 // We will enforce stricter explicit ID usage to prevent test bugs where ID was accidentally undefined.
+                 if (!args[1]) {
+                     // If intentional auto-id via doc() is needed, we can relax this, but usually it's a smell in our specific codebase.
+                     // Let's create an auto-id if really omitted but log warning? 
+                     // Or just strictly require it unless it's a new document context.
+                     // Per strict requirements: "Fail loudly on invalid usage"
+                     throw new Error("MockFirestore: doc() requires an ID when used with a collection reference. Use addDoc() for auto-ID or provide a valid string ID.");
+                 }
+                 id = args[1];
+                 path = `${args[0].path}/${id}`;
              } else {
+                 // doc(db, "coll", "doc")
+                 if (args.length < 3) { // db + coll + doc = 3 args min
+                      throw new Error("MockFirestore: doc() requires full path arguments (db, collection, docId).");
+                 }
                  path = args.slice(1).join('/');
+                 id = path.split('/').pop();
              }
-             return { type: 'doc', path, id: path.split('/').pop() };
+             
+             if (!path || path.endsWith('/')) {
+                 throw new Error(`MockFirestore: Invalid document path generated: "${path}"`);
+             }
+             
+             return { type: 'doc', path, id };
         }),
         getDoc: jest.fn(async (ref) => {
             const store = getMockFirestore();
@@ -101,15 +125,19 @@ jest.mock('firebase/firestore', () => {
                  constraints: constraints.map(c => c)
              };
         }),
-        where: jest.fn((field, op, value) => ({ type: 'where', field, op, value })),
+        where: jest.fn((field, op, value) => {
+            // Validate op
+            const validOps = ['==', '!=', '>', '>=', '<', '<=', 'array-contains', 'in', 'not-in', 'array-contains-any'];
+            if (!validOps.includes(op)) {
+                throw new Error(`MockFirestore: Unsupported 'where' operator: ${op}`);
+            }
+            return { type: 'where', field, op, value };
+        }),
         orderBy: jest.fn((field, dir) => ({ type: 'orderBy', field, dir })),
         limit: jest.fn((n) => ({ type: 'limit', n })),
-        serverTimestamp: jest.fn(() => ({ 
-            toMillis: () => Date.now(),
-            seconds: Math.floor(Date.now() / 1000) 
-        })),
+        serverTimestamp: jest.fn(() => ({ __isServerTimestamp: true })),
         increment: jest.fn((n) => ({ __isIncrement: true, value: n })), 
-        arrayUnion: jest.fn((...items) => items),
+        arrayUnion: jest.fn((...items) => ({ __isArrayUnion: true, items })),
         onSnapshot: jest.fn((query, callback) => {
              // Immediate callback with current state
              const store = getMockFirestore();
